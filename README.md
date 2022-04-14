@@ -6,7 +6,7 @@ Pretty simple, right? There are some exceptions:
 
 * Once the `sell_in` days is less then zero, `quality` degrades twice as fast;
 * The `quality` of an item can never be negative or increase beyond 50;
-* The "Aged Brie" goods actually increases in quality each passing day;
+* The "Aged Brie" goods actually increases in `quality` each passing day;
 * "Sulfuras" goods, being legendary items, never change their `sell_in` or `quality` values;
 * "Backstage passes", like aged brie, increases in `quality` as its `sell_in` value decreases;
 * Not just that: for "backstage passes" `quality` increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but `quality` drops to 0 after the concert (`sell_in` 0 or lower).
@@ -19,13 +19,13 @@ You won't find mixed categories (like a "Conjured Sulfuras / Backstage pass of D
 
 Here are some sample items:
 
-| Item | Sell In | Quality |
-| --- | --- | --- |
-| +5 Dexterity Vest | 10 | 20 |
-| Aged Brie | 2 | 0 |
-| Elixir of the Mongoose | 5 | 7 |
-| Sulfuras, Hand of Ragnaros | 0 | 80 |
-| Backstage passes to a TAFKAL80ETC concert | 15 | 20 |
-| Conjured Mana Cake | 3 | 6 |
+|                   Item                    | Sell In | Quality |
+|                    ---                    |   ---   |   ---   |
+| +5 Dexterity Vest                         |    10   |    20   |
+| Aged Brie                                 |     2   |     0   |
+| Elixir of the Mongoose                    |     5   |     7   |
+| Sulfuras, Hand of Ragnaros                |     0   |    80   |
+| Backstage passes to a TAFKAL80ETC concert |    15   |    20   |
+| Conjured Mana Cake                        |     3   |     6   |
 
 Write a web app that allows you add new items and displays the current state of the inventory. Degradation should be calculated based on the date the item was added. Note that you'll need to parse the name of the item to determine its type. Make sure you deploy, include a README with your deployed link, include appropriate styling, and keep a clean commit history.
