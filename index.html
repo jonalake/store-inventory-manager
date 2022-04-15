@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guilded Rose | Store Inventory Manager</title>
+    <title>Gilded Rose | Store Inventory Manager</title>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <script defer src="index.js"></script>
 </head>
 
 <body>
-    <h1>Guilded Rose - Story Inventory Manager</h1>
-    <form name="input">
+    <h1>Gilded Rose - Story Inventory Manager</h1>
+    <form id="input">
         <label for="item">Please enter new item</label>
         <input type="text" id="item" name="item"
             placeholder="eg. 'Sulfuras, Hand of Ragnaros', 'SuperUberSword, Conjured'" required>
@@ -24,11 +24,11 @@
         <input type="date" id="date_added" name="date_added" required>
         <button type="submit">Add Item</button>
     </form>
-    <!-- <form name="status">
+    <form id="status">
         <label for="report_date">Inventory as of</label>
         <input type="date" id="report_date" name="report_date" required>
         <button type="submit" id="update">Update Inventory</button>
-    </form> -->
+    </form>
 </body>
 
 </html>
