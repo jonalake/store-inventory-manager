@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1>Gilded Rose - Story Inventory Manager</h1>
+    <h1>Gilded Rose - Store Inventory Manager</h1>
     <form id="input">
         <label for="item">Please enter new item</label>
         <input type="text" id="item" name="item"
@@ -24,11 +24,12 @@
         <input type="date" id="date_added" name="date_added" required>
         <button type="submit">Add Item</button>
     </form>
-    <form id="status">
+    <form id="report">
         <label for="report_date">Inventory as of</label>
         <input type="date" id="report_date" name="report_date" required>
         <button type="submit" id="update">Update Inventory</button>
     </form>
+    <div class="report"></div>
 </body>
 
 </html>

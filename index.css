@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Macondo+Swash+Caps&family=MedievalSharp&family=Uncial+Antiqua&family=UnifrakturCook:wght@700&display=swap');
+
+body {
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 20px;
+    background-color: rgb(128, 98, 60);
+    color: white;
+    margin: 35px;
+}
+
 h1 {
+    text-align: center;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 32px;
     margin-bottom: 25px;
+    color: lightgray;
 }
 
 form, input {
@@ -12,5 +26,52 @@ form {
 }
 
 #item {
-    width: 400px;
+    width: 525px;
 }
+
+input, label, button {
+    font-family: 'Macondo Swash Caps', cursive;
+    font-size: 20px;
+}
+
+input {
+    background-color: rgb(117, 106, 91);
+    color: white;
+}
+
+::placeholder {
+    color: lightgrey;
+}
+
+button {
+    border: none;
+    padding: 12px 24px;
+    background-color: rgb(92, 52, 0);
+    color: white;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 450px 100px 100px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 450px 100px 100px;
+}
+
+p {
+    margin: 10px;
+}
+
+p + p {
+    text-align: center;
+}
+
+/* font-family: 'Cinzel Decorative', cursive;
+font-family: 'Macondo Swash Caps', cursive;
+font-family: 'MedievalSharp', cursive;
+font-family: 'Uncial Antiqua', cursive;
+font-family: 'UnifrakturCook', cursive; */
