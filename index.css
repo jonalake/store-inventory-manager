@@ -50,6 +50,21 @@ button {
     color: white;
 }
 
+button:hover {
+    background-color: rgb(112, 85, 46);
+    transition: all .2s ease;
+}
+
+button:focus {
+    background-color: rgb(112, 85, 46);
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
 .title {
     display: grid;
     grid-template-columns: 450px 100px 100px;
@@ -69,9 +84,3 @@ p {
 p + p {
     text-align: center;
 }
-
-/* font-family: 'Cinzel Decorative', cursive;
-font-family: 'Macondo Swash Caps', cursive;
-font-family: 'MedievalSharp', cursive;
-font-family: 'Uncial Antiqua', cursive;
-font-family: 'UnifrakturCook', cursive; */

@@ -1,10 +1,10 @@
 const input = document.querySelector("#input")
 const report = document.querySelector("#report")
 const reportOuput = document.querySelector(".report")
-const today = "2022-04-19"
+const today = "2022-04-20"
 let inventory = [{
     item_name: "+5 Dexterity Vest",
-    sell_in: 10,
+    sell_in: 3,
     quality: 20,
     date_added: today,
     category: "none",
@@ -28,14 +28,14 @@ let inventory = [{
     category: "Sulfuras",
 }, {
     item_name: "Backstage passes to a TAFKAL80ETC concert",
-    sell_in: 15,
+    sell_in: 10,
     quality: 20,
     date_added: today,
     category: "Backstage passes",
 }, {
     item_name: "Conjured Mana Cake",
     sell_in: 3,
-    quality: 6,
+    quality: 16,
     date_added: today,
     category: "Conjured",
 }]
@@ -61,8 +61,6 @@ input.addEventListener("submit", (event) => {
 
 report.addEventListener("submit", (event) => {
     event.preventDefault()
-    const formData = new FormData(event.target)
-    const reportDate = `${formData.get("report_date")}`
     const title = document.createElement("div")
     title.classList = "title"
     title.innerHTML = `
@@ -71,14 +69,16 @@ report.addEventListener("submit", (event) => {
         <p>Quality</p>
     `
     reportOuput.replaceChildren(title)
-    const items = inventory;
+    const formData = new FormData(event.target)
+    const reportDate = `${formData.get("report_date")}`
+    let items = _.cloneDeep(inventory)
     items.forEach(item => {
         const time = daysSinceAdded(reportDate, item)
         degrade(item, time)
-        reportOuput.append(createItemListing(item))
+        if (time >= 0) {
+            reportOuput.append(createItemListing(item))
+        }
     })
-    console.log(inventory)
-    console.log(items)
 })
 
 function setCategory(item) {
@@ -99,46 +99,53 @@ function daysSinceAdded(reportDate, item) {
 }
 
 function degrade(item, time) {
+    const sellBy = item.sell_in
     switch (item.category) {
         case "Sulfuras":
-            item.quality = 80
             break;
         case "Aged Brie":
-            item.sell_in = item.sell_in - time
-            item.quality = item.quality + time
-            qualityCheck(item)
+            item.sell_in -= time
+            item.quality += time
             break;
         case "Conjured":
-            item.sell_in = item.sell_in - time
+            item.sell_in -= time
             if (item.sell_in >= 0) {
-                item.quality = item.quality - (time * 2)
+                item.quality -= (time * 2)
             } else {
-                item.quality = item.quality - (time * 4)
+                item.quality -= ((2 * sellBy) + (4 * (time - sellBy)))
             }
-            qualityCheck(item)
             break;
         case "Backstage passes":
-            item.sell_in = item.sell_in - time
+            item.sell_in -= time
             if (item.sell_in > 10) {
-                item.quality = item.quality + time
+                item.quality += time
             } else if (item.sell_in <= 10 && item.sell_in > 5) {
-                item.quality = item.quality + (time * 2)
+                if (sellBy > 10) {
+                    item.quality += ((sellBy - 9) + (2 * (time - (sellBy - 10))))
+                } else {
+                    item.quality += (time * 2)
+                }
             } else if (item.sell_in <= 5 && item.sell_in > 0) {
-                item.quality = item.quality + (time * 3)
+                if (sellBy > 10) {
+                    item.quality += ((sellBy - 10) - 3 + (3 * (time - (sellBy - 10))))
+                } else if (sellBy > 5) {
+                    item.quality += ((sellBy + 1) + (3 * (time - (sellBy - 5))))
+                } else {
+                    item.quality += (time * 3)
+                }
             } else {
                 item.quality = 0
             }
-            qualityCheck(item)
             break;
         default:
-            item.sell_in = item.sell_in - time
+            item.sell_in -= time
             if (item.sell_in >= 0) {
-                item.quality = item.quality - time
+                item.quality -= time
             } else {
-                item.quality = item.quality - (2 * time)
+                item.quality -= (sellBy + (2 * (time - sellBy)))
             }
-            qualityCheck(item)
     }
+    qualityCheck(item)
     return item
 }
 
