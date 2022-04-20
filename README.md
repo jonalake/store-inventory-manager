@@ -1,10 +1,10 @@
-## Store Inventory Manager - Guilded Rose
+# Store Inventory Manager - Guilded Rose
 
 Deployed Link: https://jonalake.github.io/store-inventory-manager/
 
 Welcome to the Gilded Rose. This web app controls our store inventory management system. The app allows you add new items and displays the current state of the inventory as of a certain date. All items have a `sell_in` value which denotes the number of days we have left to sell the item and a `quality` value which denotes how valuable the item is. At the end of each day our software lowers both values for every item by 1. Degradation is calculated based on the date the item was added.
 
-# Parameters
+## Parameters
 
 * Once the `sell_in` days is less then zero, `quality` degrades twice as fast;
 * The `quality` of an item can never be negative or increase beyond 50;
@@ -17,7 +17,7 @@ Welcome to the Gilded Rose. This web app controls our store inventory management
 
 Items do not have mixed categories (like a "Conjured Sulfuras / Backstage pass of Doom"), but the category name does not have to be in the first position (ie: "SuperUberSword, Conjured" or "Mighty Sulfuras Armour of Ultimate Awesomeness").
 
-# Starting Inventory
+## Starting Inventory
 
 |                   Item                    | Sell In | Quality |
 |                    ---                    |   ---   |   ---   |
