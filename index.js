@@ -1,10 +1,10 @@
 const input = document.querySelector("#input")
 const report = document.querySelector("#report")
 const reportOuput = document.querySelector(".report")
-const today = "2022-04-20"
+const today = `${new Date().getFullYear()}-${('0' + (new Date().getMonth() + 1)).slice(-2)}-${('0' + new Date().getDate()).slice(-2)}`
 let inventory = [{
     item_name: "+5 Dexterity Vest",
-    sell_in: 3,
+    sell_in: 10,
     quality: 20,
     date_added: today,
     category: "none",
@@ -28,19 +28,17 @@ let inventory = [{
     category: "Sulfuras",
 }, {
     item_name: "Backstage passes to a TAFKAL80ETC concert",
-    sell_in: 10,
+    sell_in: 15,
     quality: 20,
     date_added: today,
     category: "Backstage passes",
 }, {
     item_name: "Conjured Mana Cake",
     sell_in: 3,
-    quality: 16,
+    quality: 6,
     date_added: today,
     category: "Conjured",
 }]
-
-console.log(inventory)
 
 input.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -55,7 +53,6 @@ input.addEventListener("submit", (event) => {
     setCategory(item)
     qualityCheck(item)
     inventory = [...inventory, item]
-    console.log(inventory)
     return inventory
 })
 
